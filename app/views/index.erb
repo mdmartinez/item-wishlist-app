@@ -1,0 +1,28 @@
+<div class="container">
+  <h1>Welcome to the Store!</h1>
+
+  <% if session[:user_id] == nil %>
+  <a href="/login"><h1>Login</h1></a>
+  <a href="/users/new"><h1>Sign Up</h1></a>
+  <% end %>
+  
+  <% if session[:user_id] != nil %>
+    <a href="/users/<%=session[:user_id]%>"><h1>My Page</h1></a>
+    <a href="/logout"><h1>Logout</h1></a>
+  <% end %>
+
+
+  <table>
+    <tr>
+      <th> Product </th>
+      <th> Category </th>
+    </tr>
+     <% @products.each do |product| %>
+    <tr>
+      <td> <%= product.name %> </td>
+      <td> <%= product.category %> </td>
+    </tr>
+    <% end %>
+  </table>
+
+</div>

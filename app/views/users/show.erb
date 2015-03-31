@@ -1,0 +1,19 @@
+<h2>Hello <%= @user.username %>!</h2>
+<h3>Here are your wishlists!</h3>
+
+<table>
+  <tr>
+    <th> Wishlist </th>
+    <th> Product </th>
+    <th> Category </th>
+  </tr>
+  <tr>
+  <% @user.wishlists.each do |list| %>
+    <a href="/wishlists/<%= list.id %>"><td> <%= list.name %> </td></a>
+    <% list.products.each do |product| %>
+    <td> <%= product.name %> </td>
+    <td> <%= product.category %> </td>
+  </tr>
+    <% end %>
+  <% end %>
+</table>

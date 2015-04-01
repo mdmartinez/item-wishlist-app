@@ -12,6 +12,6 @@ ProductsWishlist.create!(product_id: 3, wishlist_id: 1)
   Product.create!(name: Faker::Commerce.product_name, category_id: (1+rand(10)))
 end
 
-5.times do
+10.times do
   Category.create!(name: Faker::Commerce.department)
 end

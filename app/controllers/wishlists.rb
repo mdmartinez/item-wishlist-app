@@ -22,7 +22,7 @@ end
 post '/users/:user_id/wishlists/:id' do
   # params[:product_id]
   wishlist = Wishlist.find(params[:id])
-  product = Product.find(params[:mydropdown])
+  product = Product.find(params[:product_id])
   wishlist.products << product
   redirect "/users/#{params[:user_id]}/wishlists/#{params[:id]}"
 end
@@ -38,8 +38,6 @@ post '/users/:user_id/wishlists' do
   end 
 end
 
-
-
 put '/users/:user_id/wishlists/:id' do
   user = User.find(params[:id])
   user.update
@@ -47,8 +45,14 @@ put '/users/:user_id/wishlists/:id' do
 end
 
 delete '/users/:user_id/wishlists/:id' do
-  user = User.find(params[:id])
   list = Wishlist.find(params[:id])
   list.destroy
   redirect "/users/#{ params[:user_id] }"
+end
+
+delete '/users/:user_id/wishlists/:id/item' do
+  wishlist = Wishlist.find(params[:id])
+  product = Product.find(params[:product_id])
+  wishlist.products.delete(params[:product_id])
+  redirect "/users/#{params[:user_id]}/wishlists/#{params[:id]}"
 end

@@ -15,7 +15,7 @@
 
 
 <form action="/users/<%= @user.id %>/wishlists/<%= @list.id %>" method="post">
-     <select name="mydropdown">
+     <select name="product_id">
     <% @products.each do |product| %>
       <option name="product_id" value="<%= product.id %>"><%= product.name %></option>
     <% end %>
@@ -23,6 +23,15 @@
     <input type="submit" value="Add to Wishlist">
 </form>
 
+<form action="/users/<%= @user.id %>/wishlists/<%= @list.id %>/item" method="POST">
+     <select name="product_id">
+    <% @list.products.each do |product| %>
+      <option name="product_id" value="<%= product.id %>"><%= product.name %></option>
+    <% end %>
+    </select>
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete From Wishlist">
+</form>
 
 <h2><a href="/users/<%= @user.id %>/wishlists/<%= @list.id %>/edit">Edit Wishlist</a></h2>
 

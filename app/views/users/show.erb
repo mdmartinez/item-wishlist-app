@@ -1,19 +1,42 @@
 <h2>Hello <%= @user.username %>!</h2>
 <h3>Here are your wishlists!</h3>
 
+<div> 
+  <% if @error %>
+    <%= @error %>
+  <% end %> 
+</div>
+
+
 <table>
   <tr>
-    <th> Wishlist </th>
-    <th> Product </th>
-    <th> Category </th>
+    <th> Wishlist Name</th>
+    <th> Product name</th>
+    <th> Product Category</th>
   </tr>
-  <tr>
   <% @user.wishlists.each do |list| %>
-    <a href="/wishlists/<%= list.id %>"><td> <%= list.name %> </td></a>
-    <% list.products.each do |product| %>
-    <td> <%= product.name %> </td>
-    <td> <%= product.category %> </td>
+  <tr>
+    <td><a href="/users/<%= @user.id %>/wishlists/<%= list.id %>"> <%= list.name %> </a></td>
+    <td></td>
+    <td></td>  
+  </tr>
+     <% list.products.each do |product| %>
+    <tr>
+    <td></td>
+    <td><%=product.name %></td> 
+    <td><%=product.category.name %></td>
   </tr>
     <% end %>
+  </tr>
   <% end %>
 </table>
+<br>
+
+<form action="/users/<%= @user.id %>/wishlists" method="post">
+    Wishlist Name: <input type="text" name="name">
+    <input type="submit" value="Create Wishlist">
+</form>
+
+<h2><a href="/users/<%= @user.id %>/edit">Edit Account</a></h2>
+
+

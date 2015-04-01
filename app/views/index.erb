@@ -2,8 +2,8 @@
   <h1>Welcome to the Store!</h1>
 
   <% if session[:user_id] == nil %>
-  <a href="/login"><h1>Login</h1></a>
-  <a href="/users/new"><h1>Sign Up</h1></a>
+    <a href="/login"><h1>Login</h1></a>
+    <h1><a href="/users/new">Sign Up</a></h1>
   <% end %>
   
   <% if session[:user_id] != nil %>
@@ -20,7 +20,7 @@
      <% @products.each do |product| %>
     <tr>
       <td> <%= product.name %> </td>
-      <td> <%= product.category %> </td>
+      <td> <%= product.category.name %> </td>
     </tr>
     <% end %>
   </table>

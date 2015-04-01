@@ -1,5 +1,13 @@
-<form action="/users" method="post">
-    <input type="text" name="user[username]">
-    <input type="text" name="user[password]">
-    <input type="submit" value="Update">
+<form action="/users/<%= @user.id %>" method="post">
+    Update User: <input type="text" name="user[username]"> <br>
+    Update Pass: <input type="text" name="user[password]"> <br>
+    <input type="hidden" name="_method" value="PUT">
+    <input type="submit" value="Update"> <br>
+</form>
+
+<form action='/users/<%= @user.id %>' method='POST'>
+  <input type='hidden' name='_method' value='DELETE'>
+  <div class='form-sub'>
+    <input type='submit' value='Delete Account' />
+  </div>
 </form>

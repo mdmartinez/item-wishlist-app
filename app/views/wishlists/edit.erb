@@ -1,0 +1,5 @@
+<form action="/users/<%= @user.id %>/wishlists/<%= @list.id %>" method="post">
+    Wishlist Name: <input type="text" name="name">
+    <input type="hidden" name="_method" value="PUT">
+    <input type="submit" value="Update">
+</form>
